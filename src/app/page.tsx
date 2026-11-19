@@ -1,0 +1,29 @@
+import Link from "next/link";
+import { niches } from "@/lib/niches";
+
+export default function HomePage() {
+  return (
+    <div className="home">
+      <div className="home-inner">
+        <p className="home-brand">
+          Niche<em>Templates</em>
+        </p>
+        <p className="home-lead">
+          Десять нишевых лендингов для оффера: один визуальный шаблон на всю нишу. Откройте демо и
+          отправьте ссылку клиенту из CRM.
+        </p>
+        <ul className="home-grid">
+          {niches.map((niche, index) => (
+            <li key={niche.slug}>
+              <Link className="home-card" href={`/${niche.slug}`}>
+                <i>0{index + 1}</i>
+                <strong>{niche.shortName}</strong>
+                <span>{niche.eyebrow}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
